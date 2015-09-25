@@ -1,0 +1,12 @@
+<ion-view view-title="Cookbook">
+  <ion-content>
+  <div ng-controller="RecipeCtrl">
+    <div class="list" ng-repeat="recipe in recipes">
+      <a href="#/recipe/{{recipe.id}}" class="item item-avatar" href="#">
+        <img src="{{recipe.image}}">
+        <h2>{{recipe.name}}</h2>
+      </a>
+    </div>
+  </div>
+  </ion-content>
+</ion-view>
