@@ -2,13 +2,18 @@
   <ion-content class="padding">
     
   <div ng-controller="RecipeCtrl">
-    <h1>{{recipe.name}}</h1>
-    <img src="{{recipe.image}}"/>
-    <h2>Ingredients</h2>
-    <ul ng-repeat='ingredient in recipe.ingredients'>
-      <ul>{{ingredient}}</ul>
+    <h1 class="center">{{recipe.name}}</h1>
+    <img id="recipePic" src="{{recipe.image}}"/>
+    <h2 class="center">Ingredients</h2>
+    <ul class="list" ng-repeat='ingredient in recipe.ingredients'>
+      <li class="item item-checkbox">
+        <label class="checkbox checkbox-balanced">
+          <input type="checkbox">
+        </label>
+        {{ingredient}}
+      </li>
     </ul>
-    <h2>Directions</h2>
+    <h2 class="center">Directions</h2>
     <p>{{recipe.directions}}</p>
 
   </div>

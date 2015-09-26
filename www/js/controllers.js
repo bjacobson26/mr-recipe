@@ -6,6 +6,45 @@ angular.module('starter.controllers', [])
     $scope.recipes = data;
     $scope.recipe = $scope.recipes[$stateParams.recipeId - 1];
   })
+
+  $scope.recipeName = '';
+  $scope.recipeDirections = '';
+  $scope.recipeIngredient = '';
+  $scope.recipeIngredients = [];
+  $scope.recipePostData= {};
+
+  $scope.newPost = function() {
+    var post = new Post($scope.recipePostData);
+    post.$save();
+  }
+
+  $scope.submit = function(){
+    $scope.recipePostData.name = $scope.recipeName;
+    $scope.recipePostData.ingredients = $scope.recipeIngredients;
+    $scope.recipePostData.directions = $scope.recipeDirections;
+    var recipe = new Recipe($scope.recipePostData);
+    recipe.$save();
+    reset();
+  }
+
+  var reset = function(){
+    $scope.recipeName = '';
+    $scope.recipeDirections = '';
+    $scope.recipeIngredient = '';
+    $scope.recipeIngredients = [];
+    $scope.recipePostData = {};
+  }
+
+  $scope.addIngredient = function(){
+    if ($scope.recipeIngredient.length > 0) {
+      $scope.recipeIngredients.push($scope.recipeIngredient);
+      $scope.recipeIngredient = '';
+    }
+  }
+  $scope.removeIngredient = function(index){
+    $scope.recipeIngredients.pop(index);
+  }
+
 })
 
 

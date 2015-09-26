@@ -1,1 +1,17 @@
 /* Empty. Add your own CSS if you like */
+
+#recipePic {
+  width: 20em;
+  height: 20em;
+  display: block;
+  margin: auto;
+  border-radius: 10%;
+}
+
+.center {
+  text-align: center;
+}
+
+.numbered {
+  list-style-type: decimal;
+}

@@ -1,5 +1,37 @@
 <ion-view view-title="Create A Recipe">
   <ion-content>
-  CREATING A RECIPE WLL GO HERE
+  <div ng-controller="RecipeCtrl">
+
+    <div class="list">
+      <label class="item item-input">
+        <input ng-model="recipeName" type="text" placeholder="Recipe Name">
+      </label>
+
+      <h2> Add Ingredients... </h2>
+      <div class="item item-button-right">
+        <input ng-model="recipeIngredient" type="text" placeholder="4 lbs bacon">
+        <button ng-click="addIngredient()" class="button button-positive">
+          <i class="icon ion-plus-round"></i>
+        </button>
+      </div>
+
+      <div ng-repeat="ingredient in recipeIngredients track by $index" class="item item-button-right">
+          <li>{{ingredient}}</li>
+          <button ng-click="removeIngredient($index)" class="button button-assertive">
+            <i class="icon ion-ios-trash"></i>
+          </button>
+      </div>
+
+      <h2> Directions... </h2>
+      <label class="item item-input">
+        <textarea ng-model="recipeDirections" placeholder="Wrap the bacon in some bacon and saute it in bacon."></textarea>
+      </label>
+    </div>
+
+    <button ng-click="submit()" class="button button-block button-balanced">
+      <span>Submit Recipe</span>
+    </button>
+  </div>
+
   </ion-content>
 </ion-view>
