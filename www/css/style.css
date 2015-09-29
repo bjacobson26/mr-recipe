@@ -1,5 +1,21 @@
 /* Empty. Add your own CSS if you like */
 
+.mainFont {
+  font-family: 'Indie Flower', cursive;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.bullets {
+  list-style-type: circle;
+}
+
+#directions {
+  font-size: 18px;
+}
+
 #recipePic {
   width: 20em;
   height: 20em;

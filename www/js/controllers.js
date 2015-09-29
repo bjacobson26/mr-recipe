@@ -1,10 +1,18 @@
 angular.module('starter.controllers', [])
 
-.controller('RecipeCtrl', function($scope, $stateParams, Recipe){
+.config(function($compileProvider){
+    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
+})
+
+.controller('RecipeCtrl', function($scope, $stateParams, Recipe, Camera){
   var query = Recipe.query();
   query.$promise.then(function(data) {
     $scope.recipes = data;
     $scope.recipe = $scope.recipes[$stateParams.recipeId - 1];
+    var directionsArray = $scope.recipe.directions.split(".");
+    directionsArray.pop([directionsArray.length - 1]);
+    $scope.directions = directionsArray;
+    console.log($scope.directions);
   })
 
   $scope.recipeName = '';
@@ -45,8 +53,16 @@ angular.module('starter.controllers', [])
     $scope.recipeIngredients.pop(index);
   }
 
-})
+  $scope.getPhoto = function() {
+    console.log("Getting camera!");
+    Camera.getPicture().then(function(imageURI) {
+      console.log(imageURI);
+    }, function(err) {
+      console.err(err);
+    });
+  };
 
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
